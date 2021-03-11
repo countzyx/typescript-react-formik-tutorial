@@ -3,11 +3,15 @@ import { useFormik } from 'formik';
 
 type FormValues = {
   email: string;
+  firstName: string;
+  lastName: string;
 };
 
 const SignupForm: React.FC = () => {
   const initialValues: FormValues = {
     email: '',
+    firstName: '',
+    lastName: '',
   };
 
   const formik = useFormik({
@@ -19,6 +23,26 @@ const SignupForm: React.FC = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      <label htmlFor='firstName'>
+        First Name
+        <input
+          id='firstName'
+          name='firstName'
+          type='text'
+          onChange={formik.handleChange}
+          value={formik.values.firstName}
+        />
+      </label>
+      <label htmlFor='lastName'>
+        Last Name
+        <input
+          id='lastName'
+          name='lastName'
+          type='text'
+          onChange={formik.handleChange}
+          value={formik.values.lastName}
+        />
+      </label>
       <label htmlFor='email'>
         Email Address
         <input
