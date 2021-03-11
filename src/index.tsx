@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
 
 const render = (element: HTMLElement) => {
@@ -16,7 +16,7 @@ const render = (element: HTMLElement) => {
 const rootElement = document.getElementById("root");
 if (rootElement) {
   if (module.hot) {
-    module.hot.accept("./App/Layout/App", () => setTimeout(render));
+    module.hot.accept("./App/App", () => setTimeout(render));
   }
 
   render(rootElement);
