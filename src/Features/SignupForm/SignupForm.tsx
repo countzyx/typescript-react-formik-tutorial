@@ -65,11 +65,12 @@ const SignupForm: React.FC = () => {
           id='firstName'
           name='firstName'
           type='text'
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.firstName}
         />
       </label>
-      {formik.errors.firstName ? (
+      {formik.touched.firstName && formik.errors.firstName ? (
         <div className={styles.error}>{formik.errors.firstName}</div>
       ) : null}
 
@@ -79,11 +80,14 @@ const SignupForm: React.FC = () => {
           id='lastName'
           name='lastName'
           type='text'
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.lastName}
         />
       </label>
-      {formik.errors.lastName ? <div className={styles.error}>{formik.errors.lastName}</div> : null}
+      {formik.touched.lastName && formik.errors.lastName ? (
+        <div className={styles.error}>{formik.errors.lastName}</div>
+      ) : null}
 
       <label htmlFor='email'>
         Email Address
@@ -91,11 +95,14 @@ const SignupForm: React.FC = () => {
           id='email'
           name='email'
           type='email'
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           value={formik.values.email}
         />
       </label>
-      {formik.errors.email ? <div className={styles.error}>{formik.errors.email}</div> : null}
+      {formik.touched.email && formik.errors.email ? (
+        <div className={styles.error}>{formik.errors.email}</div>
+      ) : null}
 
       <button type='submit'>Submit</button>
     </form>
