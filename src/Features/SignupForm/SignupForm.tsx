@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FormikErrors, useFormik } from 'formik';
+import styles from './SignupForm.module.css';
 
 const kRequired = 'Required';
 
@@ -68,6 +69,10 @@ const SignupForm: React.FC = () => {
           value={formik.values.firstName}
         />
       </label>
+      {formik.errors.firstName ? (
+        <div className={styles.error}>{formik.errors.firstName}</div>
+      ) : null}
+
       <label htmlFor='lastName'>
         Last Name
         <input
@@ -78,6 +83,8 @@ const SignupForm: React.FC = () => {
           value={formik.values.lastName}
         />
       </label>
+      {formik.errors.lastName ? <div className={styles.error}>{formik.errors.lastName}</div> : null}
+
       <label htmlFor='email'>
         Email Address
         <input
@@ -88,6 +95,7 @@ const SignupForm: React.FC = () => {
           value={formik.values.email}
         />
       </label>
+      {formik.errors.email ? <div className={styles.error}>{formik.errors.email}</div> : null}
 
       <button type='submit'>Submit</button>
     </form>
