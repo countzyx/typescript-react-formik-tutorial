@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -37,14 +38,7 @@ const SignupForm: React.FC = () => {
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor='firstName'>
         First Name
-        <input
-          id='firstName'
-          name='firstName'
-          type='text'
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.firstName}
-        />
+        <input id='firstName' type='text' {...formik.getFieldProps('firstName')} />
       </label>
       {formik.touched.firstName && formik.errors.firstName ? (
         <div className={styles.error}>{formik.errors.firstName}</div>
@@ -52,14 +46,7 @@ const SignupForm: React.FC = () => {
 
       <label htmlFor='lastName'>
         Last Name
-        <input
-          id='lastName'
-          name='lastName'
-          type='text'
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.lastName}
-        />
+        <input id='lastName' type='text' {...formik.getFieldProps('lastName')} />
       </label>
       {formik.touched.lastName && formik.errors.lastName ? (
         <div className={styles.error}>{formik.errors.lastName}</div>
@@ -67,14 +54,7 @@ const SignupForm: React.FC = () => {
 
       <label htmlFor='email'>
         Email Address
-        <input
-          id='email'
-          name='email'
-          type='email'
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
+        <input id='email' type='email' {...formik.getFieldProps('email')} />
       </label>
       {formik.touched.email && formik.errors.email ? (
         <div className={styles.error}>{formik.errors.email}</div>
