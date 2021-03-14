@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import { Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './SignupForm.module.css';
 
@@ -36,35 +36,33 @@ const SignupForm: React.FC = () => (
       }, 400);
     }}
   >
-    {(formik) => (
-      <form onSubmit={formik.handleSubmit}>
-        <label htmlFor='firstName'>
-          First Name
-          <input id='firstName' type='text' {...formik.getFieldProps('firstName')} />
-        </label>
-        {formik.touched.firstName && formik.errors.firstName ? (
-          <div className={styles.error}>{formik.errors.firstName}</div>
-        ) : null}
+    <Form>
+      <div>
+        <label htmlFor='firstName'>First Name</label>
+        <Field name='firstName' type='text' />
+        <ErrorMessage name='firstName'>
+          {(message) => <div className={styles.error}>{message}</div>}
+        </ErrorMessage>
+      </div>
 
-        <label htmlFor='lastName'>
-          Last Name
-          <input id='lastName' type='text' {...formik.getFieldProps('lastName')} />
-        </label>
-        {formik.touched.lastName && formik.errors.lastName ? (
-          <div className={styles.error}>{formik.errors.lastName}</div>
-        ) : null}
+      <div>
+        <label htmlFor='lastName'>Last Name</label>
+        <Field name='lastName' type='text' />
+        <ErrorMessage name='lastName'>
+          {(message) => <div className={styles.error}>{message}</div>}
+        </ErrorMessage>
+      </div>
 
-        <label htmlFor='email'>
-          Email Address
-          <input id='email' type='email' {...formik.getFieldProps('email')} />
-        </label>
-        {formik.touched.email && formik.errors.email ? (
-          <div className={styles.error}>{formik.errors.email}</div>
-        ) : null}
+      <div>
+        <label htmlFor='email'>Email Address</label>
+        <Field name='email' type='email' />
+        <ErrorMessage name='email'>
+          {(message) => <div className={styles.error}>{message}</div>}
+        </ErrorMessage>
+      </div>
 
-        <button type='submit'>Submit</button>
-      </form>
-    )}
+      <button type='submit'>Submit</button>
+    </Form>
   </Formik>
 );
 
