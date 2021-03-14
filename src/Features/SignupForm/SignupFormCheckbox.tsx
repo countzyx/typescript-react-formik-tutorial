@@ -16,7 +16,7 @@ const SignupFormCheckbox: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <label className='checkbox-input'>
-        <input type={kCheckboxType} {...field} />
+        <input {...field} type={kCheckboxType} />
         {children}
       </label>
       {meta.touched && meta.error ? <div className={errorClassName}>{meta.error}</div> : null}
